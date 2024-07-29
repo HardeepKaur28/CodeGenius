@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="wesite icon" href="./aesthetic-blue-color-pattern-abstract-background-illustration-perfect-for-website-backgrounds-wallpapers-posters-banners-book-covers-invitation-cards-vector.jpg">
+    <title>QR Code Generator</title>
+    <style>
+     body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("./photo.jpg");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrapper {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px ;
+    box-shadow: 0 10px 20px rgba(69, 66, 66, 0.8);
+}
+header {
+    margin-bottom: 30px;
+}
+h1 {
+    color: #8354ba;
+    font-size: 48px;
+    margin-bottom: 57px;
+    text-shadow: 2px 5px 4px rgb(217, 208, 208);
+}
+p {
+    color: #8a839f;
+    font-size: 17px;
+    margin-bottom: 17px;
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+input {
+    padding: 18px;
+    width: 70%;
+    box-sizing: border-box;
+    border: 2px solid #8354ba;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-size: 17px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border: 2px solid #480d8b;
+    background-color: #e8e7e9;
+}
+
+button {
+    padding: 18px 35px;
+    background-color: #8354ba;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5e3094;
+    box-shadow: 2px 5px 6px grey;
+}
+
+.qr-code {
+    margin-top: 40px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>QR Generator</h1>
+            <p>Paste a URL and Enter Text to create QR code</p>
+            <div class="form">
+                <input type="text" placeholder="Enter Text Or URL"><br/>
+                <button>Generate QR Code</button>
+            </div>
+        </header>
+        <div class="qr-code">
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        const wrapper = document.querySelector("wrapper");
+        const qrInput = document.querySelector(".form input");
+        const generateBtn =document.querySelector(".form button");
+        const qrImg = document.querySelector('.qr-code img');
+
+        generateBtn.addEventListener("click" ,() => {
+            let qrValue = qrInput.value;
+            console.log(qrValue);
+            if(!qrValue){
+                alert("paste a url OR enter text to create QR code")
+            }
+            else{
+            generateBtn.innerHTML = "Genertating QR Code...";
+            qrImg.src = ` https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=${qrValue}`;
+            qrImg.addEventListener("load" ,() =>{
+              
+                generateBtn.innerHTML = "Genertate QR Code"
+            });
+        }
+        });
+    </script>
+</body>
+</html>
